@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/login.css">
+  <script src="https://kit.fontawesome.com/6b2ebd8067.js" crossorigin="anonymous"></script>
+  <title>Document</title>
+</head>
+<body>
+  
+  <div class="main">
+
+    <div class="pannel">
+      <div class="pannel_c">
+        <a href="#">Bénéficiaires</a>
+      </div>
+    </div>
+
+    <div class="body">
+
+      <div class="body_c">
+
+        <div class="search">
+          <input type="text" placeholder="Chercher ...">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <div class="form_c">
+          <h2>Ajouter un bénéciare</h2>
+          <form action="#" method="POST" id="form_add_benef">
+
+            <div class="form_c_row_1">
+              <div class="form_input_c">
+                <label for="nir">NIR<span>*</span></label>
+                <input id="nir" name="nir" type="text" placeholder="EX : CCFDRDERDFCVFVGFRSS">
+                <p>Le NIR n'est pas correct, ou déjà existant</p>
+              </div>
+            </div>
+
+            <div class="form_c_row_2">
+              <div class="form_input_c">
+                <label for="annee_n">Année de naissance</label>
+                <select name="annee_n" id="annee_n"></select>
+                <p>L'année de naissance n'est pas correct</p>
+              </div>
+              <div class="form_input_c">
+                <label for="dep">Département de résidence</label>
+                <input id="dep" type="text" placeholder="Ex: Essone ...">
+                <p>Le département de résidence n'est pas correct</p>
+              </div>
+            </div>
+
+            <div class="form_c_row_1">
+              <div class="form_input_c">
+                <label for="sexe">Sexe</label>
+                <select name="sexe" id="sexe">
+                  <option value="0">Homme</option>
+                  <option value="1">Femme</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form_c_row_2">
+              <div class="form_input_c">
+                <label for="annee_d">Année de décès du bénéficiaure</label>
+                <select name="annee_d" id="annee_d"></select>
+              </div>
+              <div class="form_input_c">
+                <label for="mois_d">Mois de décès</label>
+                <select name="mois_d" id="mois_d">
+                  <option value="janvier">Janvier</option>
+                  <option value="fevrier">Février</option>
+                  <option value="mars">Mars</option>
+                  <option value="avril">Avril</option>
+                  <option value="mai">Mai</option>
+                  <option value="juin">Juin</option>
+                  <option value="juillet">Juillet</option>
+                  <option value="aout">Août</option>
+                  <option value="septembre">Septembre</option>
+                  <option value="octobre">Octobre</option>
+                  <option value="novembre">Novembre</option>
+                  <option value="decembre">Décembre</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form_c_button">
+              <button>Ajouter</button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    const anneeNSelect = document.getElementById("annee_n");
+    const anneeDSelect = document.getElementById("annee_d");
+    const moisDSelect = document.getElementById("mois_d");
+
+    const benefFormAdd = document.getElementById("form_add_benef");
+
+    initSelects();
+
+
+    if (benefFormAdd) benefFormAdd.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const nir = document.getElementById("");
+
+    })
+
+
+    /** FUNCTIONS **/
+
+    function initSelects() {
+      if (anneeNSelect) for (let i=new Date().getFullYear(); i>=1900; i--) anneeNSelect.appendChild(createOption(i,i));
+      if (anneeDSelect) for (let i=new Date().getFullYear(); i>=1900; i--) anneeDSelect.appendChild(createOption(i,i));
+    };
+
+    function createOption(value, placeholder) {
+      let option = document.createElement("option");
+      option.setAttribute("value", value);
+      option.innerHTML = placeholder;
+      return option;
+    }
+
+
+  </script>
+
+</body>
+</html>
