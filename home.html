@@ -23,20 +23,19 @@
       <div class="body_c">
 
         <div class="search">
-          <input type="text" placeholder="Chercher ...">
+          <input id="search" type="text" placeholder="Chercher ...">
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
 
         <!-- FORM POUR AJOUTER UN BENEFICIARE -->
-        
         <div class="form_c">
           <h2>Ajouter un bénéciare</h2>
           <form action="#" method="POST" id="form_add_benef">
 
             <div class="form_c_row_1">
               <div class="form_input_c">
-                <label for="nir">NIR<span>*</span></label>
-                <input id="nir" name="nir" type="text" placeholder="EX : CCFDRDERDFCVFVGFRSS">
+                <label for="nir">NIR</label>
+                <input id="nir" name="nir" type="text" placeholder="EX : AZSDRFFVBGKLPMDFC">
                 <p>Le NIR n'est pas correct, ou déjà existant</p>
               </div>
             </div>
@@ -100,15 +99,18 @@
           <h2>Ajouter une affection au bénéficiare : nom</h2>
           <form action="#" method="POST" id="form_add_affect">
 
-            <div class="form_c_row_2">
+            <div class="form_c_row_1">
               <div class="form_input_c">
                 <label for="nir">NIR<span>*</span></label>
-                <input id="nir" name="nir" type="text" placeholder="EX : CCFDRDERDFCVFVGFRSS" readonly>
+                <input id="nir" name="nir" type="text" placeholder="EX : CCFDRDERDFCVFVGFRSS" readonly disabled>
                 <p>Le NIR n'est pas correct, ou déjà existant</p>
               </div>
+            </div>
+
+            <div class="form_c_row_1">
               <div class="form_input_c">
                 <label for="nir">N ALD<span>*</span></label>
-                <input id="ald" name="ald" type="number" placeholder="EX : 22398576" readonly>
+                <input id="ald" name="ald" type="number" placeholder="EX : 22398576">
                 <p>Le numéro ALD n'est pas correct</p>
               </div>
             </div>
@@ -154,7 +156,7 @@
             <div class="form_c_row_1">
               <div class="form_input_c">
                 <label for="nir">NIR<span>*</span></label>
-                <input id="nir" name="nir" type="text" placeholder="EX : CCFDRDERDFCVFVGFRSS" readonly>
+                <input id="nir" name="nir" type="text" placeholder="EX : CCFDRDERDFCVFVGFRSS" readonly disabled>
                 <p>Le NIR n'est pas correct, ou déjà existant</p>
               </div>
             </div>

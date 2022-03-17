@@ -1,6 +1,11 @@
+import search from "./modules/search.js";
 import checkAddBenefForm from "./modules/contorlAddBenef.js";
 
-checkAddBenefForm();
+(function init(){
+  search();
+  checkAddBenefForm();
+})()
+
 
 
 // function checkAddAffectForm(){

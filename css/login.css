@@ -236,6 +236,10 @@ body {
   color: #A0A0A0;
 }
 
+.form_c form .form_input_c input[type="text"]:disabled {
+  background: #dddddd;
+}
+
 .form_c form .form_c_button {
   margin-top: 40px;
 }
@@ -257,3 +261,7 @@ body {
 .form_c form .form_c_button button:active {
   background-color: #1285B3;
 }
+
+/* .form_c form .disabled {
+  background-color: #;
+} */
