@@ -149,7 +149,7 @@
         <!-- FORM POUR AJOUTER UNE PRESTATION -->
         <div class="form_c">
           <h2>Ajouter une prestation au bénéficiare : nom</h2>
-          <form action="#" method="POST" id="form_add_affect">
+          <form action="#" method="POST" id="form_add_pres">
 
             <div class="form_c_row_1">
               <div class="form_input_c">
@@ -232,41 +232,7 @@
 
   </div>
 
-  <script>
-
-    const anneeNSelect = document.getElementById("annee_n");
-    const anneeDSelect = document.getElementById("annee_d");
-    const moisDSelect = document.getElementById("mois_d");
-
-    const benefFormAdd = document.getElementById("form_add_benef");
-
-    initSelects();
-
-
-    if (benefFormAdd) benefFormAdd.addEventListener("submit", function(e){
-      e.preventDefault();
-
-      const nir = document.getElementById("");
-
-    })
-
-
-    /** FUNCTIONS **/
-
-    function initSelects() {
-      if (anneeNSelect) for (let i=new Date().getFullYear(); i>=1900; i--) anneeNSelect.appendChild(createOption(i,i));
-      if (anneeDSelect) for (let i=new Date().getFullYear(); i>=1900; i--) anneeDSelect.appendChild(createOption(i,i));
-    };
-
-    function createOption(value, placeholder) {
-      let option = document.createElement("option");
-      option.setAttribute("value", value);
-      option.innerHTML = placeholder;
-      return option;
-    }
-
-
-  </script>
+  <script type="module" src="./scripts/app.js"></script>
 
 </body>
 </html>
