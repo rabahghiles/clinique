@@ -11,9 +11,11 @@ export function checkInput(input, regex) {
 
   let value = input.value.trim();
 
-  if ( regex.test(value) ) return value
+  if ( regex.test(value) ) return {
+    _id: input.id,
+    value
+  }
   else {
-    // console.log(input.parentNode.classList);
     input.parentNode.classList.add("form_input_c_error");
     return false;
   }
