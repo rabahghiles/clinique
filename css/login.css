@@ -262,6 +262,60 @@ body {
   background-color: #1285B3;
 }
 
-/* .form_c form .disabled {
-  background-color: #;
-} */
+
+/* SEARCH RESULT */
+
+.result_search {}
+
+.result_search .header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 3fr;
+  padding: 20px;
+}
+.result_search .header div {
+  font-size: 12px;
+  font-weight: bold;
+  color: #505050;
+}
+
+.result_search .row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 3fr;
+  padding: 20px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.result_search .row:nth-child(2n) {
+  background-color: rgb(241, 241, 241);
+}
+
+.result_search .row div {
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.result_search .row .actions{
+  display: flex;
+  justify-content: end;
+  list-style: none;
+}
+
+.result_search .row .actions .benef_action{
+  padding: 10px;
+  text-decoration: none;
+  margin-left: 10px;
+  font-size: 10px;
+  color: #FFF;
+  border-radius: 3px;
+  transition: all linear .28;
+}
+
+.benef_action_add_affection { background-color: #1285B3; }
+.benef_action_add_affection:hover { background-color: #3992b6; }
+.benef_action_add_prestation { background-color: #1285B3; }
+.benef_action_add_prestation:hover { background-color: #3992b6; }
+.benef_action_delet_benef { background-color: #FF1946; }
+.benef_action_delet_benef:hover { background-color: #fc4368; }
