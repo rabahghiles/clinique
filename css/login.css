@@ -25,7 +25,8 @@ body {
 }
 
 .login_1 {
-  background-color: orange;
+  background: url(../img/bg.jpg) center no-repeat;
+  background-size: cover;
 }
 
 .login_2 {
@@ -106,7 +107,7 @@ body {
 }
 
 .pannel {
-  min-width: 300px;
+  min-width: 200px;
   padding: 20px;
   background-color: #2A2A2A;
   border-right: 1px solid #3A3A3A;
@@ -177,6 +178,11 @@ body {
   color: #505050;
   font-size: 22px;
   margin-bottom: 20px;
+}
+
+.form_c h3 {
+  color: #666565;
+  font-size: 16px;
 }
 
 .form_c form {
@@ -319,3 +325,136 @@ body {
 .benef_action_add_prestation:hover { background-color: #3992b6; }
 .benef_action_delet_benef { background-color: #FF1946; }
 .benef_action_delet_benef:hover { background-color: #fc4368; }
+
+
+/* DETAILS BENEF */
+.personnal_infos {
+  padding: 20px 0;
+}
+.personnal_infos div {
+  font-size: 14px;
+  color: #3d3d3d;
+  margin-bottom: 5px;
+}
+.personnal_infos div .strong {
+  font-weight: bold;
+}
+
+.personnal_infos .actions {
+  padding: 20px 0;
+  display: flex;
+}
+.personnal_infos .action_benef {
+  height: 50px;
+  width: 220px;
+  text-decoration: none;
+  background-color: orange;
+  margin-right: 20px;
+  border-radius: 3px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: #FFF;
+  transition: all linear .28s;
+}
+.personnal_infos .action_benef_modif {background-color: #1285B3;}
+.personnal_infos .action_benef_modif:hover {background-color: #00B8FF;}
+.personnal_infos .action_benef_delet {
+  background: none;
+  border: 1px solid #FF1946;
+  color: #FF1946;
+}
+.personnal_infos .action_benef_delet:hover {
+  background: #FF1946;
+  color: #FFF;
+}
+
+
+.affecs {
+  margin-bottom: 40px;
+}
+
+.affecs ul,
+.press ul {
+  list-style: none;
+}
+
+
+.affecs ul .head,
+.press ul .head {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2fr;
+  padding: 20px;
+}
+
+.press ul .head {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+}
+
+.affecs ul .head div,
+.press ul .head div {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.affecs ul .row,
+.press ul .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2fr;
+  padding: 20px;
+  border-radius: 3px;
+}
+.press ul .row {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+}
+.affecs ul .row:nth-child(2n),
+.press ul .row:nth-child(2n) {
+  background-color: rgb(241, 241, 241);
+}
+.affecs ul .row div,
+.press ul .row div {
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.affecs ul .row .actions,
+.press ul .row .actions {
+  display: flex;
+  justify-content: end;
+  flex-direction: row;
+}
+.affecs ul .row .actions .action_affec,
+.press ul .row .actions .action_press {
+  margin-left: 20px;
+  height: 40px;
+  width: 100px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.affecs ul .row .actions .action_affec_modif,
+.press ul .row .actions .action_press_modif {background-color: #1285B3;}
+
+.affecs ul .row .actions .action_affec_modif:hover,
+.press ul .row .actions .action_press_modif:hover {background-color: #00B8FF;}
+
+.affecs ul .row .actions .action_affec_delet,
+.press ul .row .actions .action_press_delet {
+  background: none;
+  border: 1px solid #FF1946;
+  color: #FF1946;
+}
+.affecs ul .row .actions .action_affec_delet:hover,
+.press ul .row .actions .action_press_delet:hover {
+  background: #FF1946;
+  color: #FFF;
+}
+
+

@@ -1,5 +1,16 @@
+<?php
+
+  session_start();
+
+  if (empty($_SESSION["user_email"])) {
+    header("Location: index.php");
+    exit;
+  }
+
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,8 +26,6 @@
     <div class="pannel">
       <div class="pannel_c">
         <a class="switchBtn" href="1">Bénéficiaires</a>
-        <a class="switchBtn" href="2">Affections</a>
-        <a class="switchBtn" href="3">Préstation</a>
       </div>
     </div>
 
@@ -29,9 +38,7 @@
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
 
-        <div class="form_c" id="form_c">
-          
-        </div>
+        <div class="form_c" id="form_c"></div>
 
       </div>
 

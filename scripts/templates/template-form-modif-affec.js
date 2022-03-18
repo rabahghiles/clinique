@@ -12,7 +12,7 @@ function renderFormAddAffec(nir){
   }
 
   return `
-    <h2>Ajouter une affection au bénéficiare : nom</h2>
+    <h2>Modifier les informations de l'affection du bénéficiare : ${nir}</h2>
     <form action="#" method="POST" id="form_add_affect">
 
       <div class="form_c_row_1">

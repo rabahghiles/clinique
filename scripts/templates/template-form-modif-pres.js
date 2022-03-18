@@ -16,7 +16,7 @@ function renderFormAddPres(nir){
   }
 
   return `
-    <h2>Ajouter une prestation au bénéficiare : nom</h2>
+    <h2>Modifier la prestation au bénéficiare : ${data.nir}</h2>
     <form action="#" method="POST" id="form_add_pres">
 
       <div class="form_c_row_1">

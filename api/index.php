@@ -1,0 +1,1 @@
+Qui peut entendre en silence ce qui lui déplaît, aura ce qui lui plaît.

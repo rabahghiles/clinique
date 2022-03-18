@@ -1,4 +1,4 @@
-function renderFormAddAffec(){
+function renderFormAddAffec(nir){
 
   console.log(nir);
 

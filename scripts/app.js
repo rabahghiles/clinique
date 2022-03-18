@@ -13,6 +13,7 @@ import renderFormEditAffec from "./templates/template-form-modif-affec.js";
 import renderFormEditPres from "./templates/template-form-modif-pres.js";
 
 import resultSearch from "./templates/template-form-result-search.js";
+import detailsBenef from "./templates/template-details-benef.js";
 
 (function init(){
   search();
@@ -20,7 +21,7 @@ import resultSearch from "./templates/template-form-result-search.js";
   checkAddAffecForm();
   checkAddPresForm();
   switchPage();
-  renderPage(0);
+  renderPage(7);
 })()
 
 
@@ -30,6 +31,10 @@ function switchPage(){
     e.preventDefault();
     renderPage(this.getAttribute("href"))
   }))
+
+}
+
+function benefUserActions(){
 
   document.querySelectorAll(".benef_action_add_affection").forEach(btn => btn.addEventListener("click", function(e){
     e.preventDefault();
@@ -46,7 +51,6 @@ function switchPage(){
     // renderPage(this.getAttribute("href"))
   }))
 
-
 }
 
 function renderPage(page, nir) {
@@ -59,7 +63,7 @@ function renderPage(page, nir) {
   if ( page == 0 ) {
 
     container.innerHTML = resultSearch();
-    switchPage();
+    benefUserActions();
 
   } else if ( page == 1 ) {
 
@@ -88,6 +92,11 @@ function renderPage(page, nir) {
   } else if ( page ==  6) {
 
     container.innerHTML = renderFormEditPres(nir);
+    checkAddBenefForm;
+
+  } else if ( page ==  7) {
+
+    container.innerHTML = detailsBenef();
     checkAddBenefForm;
 
   }
