@@ -46,6 +46,7 @@
 
   </div>
 
+  <script src="./scripts/librairies/jquery.js"></script>
   <script type="module" src="./scripts/app.js"></script>
 
 </body>
