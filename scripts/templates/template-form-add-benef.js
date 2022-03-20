@@ -29,8 +29,8 @@ function renderFormAddBenef(){
         <div class="form_input_c">
           <label for="sexe">Sexe</label>
           <select name="sexe" id="sexe">
-            <option value="0">Homme</option>
-            <option value="1">Femme</option>
+            <option value="1">Homme</option>
+            <option value="2">Femme</option>
           </select>
         </div>
       </div>

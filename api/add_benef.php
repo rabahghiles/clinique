@@ -12,7 +12,7 @@
     $_POST["anneeDeces"]."".$_POST["moisDeces"]
   ]);
 
-  $response->error = false;
+  $response->nir = $_POST["nir"];
   echo json_encode($response);
 
 ?>

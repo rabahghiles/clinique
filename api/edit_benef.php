@@ -12,7 +12,7 @@
     $_POST["nir"],
   ]);
 
-  $response->error = false;
+  $response->nir = $_POST["nir"];
   echo json_encode($response);
 
 ?>

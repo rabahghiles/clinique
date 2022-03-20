@@ -20,7 +20,7 @@ function checkAddPresForm(){
     
 
     // Regex
-    const nirRegex = /^[a-zA-Z]{17}$/;
+    const nirRegex = /^[a-zA-Z0-9]{10,16}$/;
     const dateRegex = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
     const numPsRegex = /^[a-zA-Z]{32}$/;
     const natRegex = /^[0-9]{4}$/;

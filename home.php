@@ -2,7 +2,10 @@
 
   session_start();
 
-  if (empty($_SESSION["user_email"])) {
+  if ( empty($_SESSION["user_email"]) || !empty($_POST["deconnexion"]) ) {
+    $_SESSION["user_email"] = false;
+    $_SESSION["password"] = false;
+    session_destroy();
     header("Location: index.php");
     exit;
   }
@@ -34,11 +37,19 @@
       <div class="body_c">
 
         <div class="search">
-          <input id="search" type="text" placeholder="Chercher ...">
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <div class="search_container">
+            <input id="search" type="text" placeholder="Chercher par NIR ...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <form class="deconnexion_form" action="home.php" method="post">
+            <input type="hidden" name="deconnexion" value="deconnexion">
+            <button>Déconnexion</button>
+          </form>
         </div>
 
-        <div class="form_c" id="form_c"></div>
+        <div class="form_c" id="form_c">
+          <p class="first">Commncer une recherche pour avoir un resultat ...</p>
+        </div>
 
       </div>
 

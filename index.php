@@ -4,10 +4,10 @@
 
   session_start();
 
-  if(!empty($_SESSION["user_email"])) {
-    header("Location: home.php");
-    exit;
-  }
+  // if(!empty($_SESSION["user_email"])) {
+  //   header("Location: home.php");
+  //   exit;
+  // }
 
   $error = false;
 
@@ -16,14 +16,14 @@
     if ( empty($_POST["email"]) || empty($_POST["password"])  ) $error = true;
     else {
       
-      $q = $db->prepare('SELECT email, password FROM users WHERE email LIKE ?');
+      $q = $db->prepare('SELECT email, psw FROM users WHERE email LIKE ?');
       $q->execute([$_POST["email"]]);
       $user = $q->fetch();
 
       if ( !$user ) $error = true;
       else {
 
-        if (password_verify($_POST["password"], $user["password"])) {
+        if (password_verify($_POST["password"], $user["psw"])) {
 
           $_SESSION["user_email"] = $user["email"];
           header("Location: home.php");

@@ -1,6 +1,7 @@
 import { initSelects, checkInput } from "./utils.js"
+import { renderPage } from "../app.js";
 
-function checkAddBenefForm(){
+function checkAddBenefForm(type){
 
   const form = document.getElementById("form_add_benef");
 
@@ -15,7 +16,7 @@ function checkAddBenefForm(){
     const moisDSelect = document.getElementById("mois_d");
 
     // Regex
-    const nirRegex = /^[a-zA-Z]{17}$/;
+    const nirRegex = /^[a-zA-Z0-9]{10,16}$/;
     const yearRegex = /^[0-9]{4}$/;
     const monthRegex = /^[0-9]{2}$/;
     const depRegex = /^[0-9]{2,3}$/;
@@ -32,23 +33,44 @@ function checkAddBenefForm(){
       form.querySelectorAll(".form_input_c_error").forEach( elem => elem.classList.remove("form_input_c_error"));
       
       let error = false;
-      const data = {};
+      const data = new FormData();
+      const params = {};
 
-      checkInput(nir, nirRegex) ? data.nir = checkInput(nir, nirRegex) : error = true;
-      checkInput(anneeNSelect, yearRegex) ? data.anneeNaissance = checkInput(anneeNSelect, yearRegex) : error = true;
-      checkInput(departementR, depRegex) ? data.departement = checkInput(departementR, depRegex) : error = true;
-      checkInput(sexe, sexeRegex) ? data.sexe = checkInput(sexe, sexeRegex) : error = true;
-      checkInput(anneeDSelect, yearRegex) ? data.anneeDeces = checkInput(anneeDSelect, yearRegex) : error = true;
-      checkInput(moisDSelect, monthRegex) ? data.moisDeces = checkInput(moisDSelect, monthRegex) : error = true;
+      checkInput(nir, nirRegex) ? data.append('nir', checkInput(nir, nirRegex).value) : error = true;
+      checkInput(anneeNSelect, yearRegex) ? data.append('anneeNaissance', checkInput(anneeNSelect, yearRegex).value) : error = true;
+      checkInput(departementR, depRegex) ? data.append('departement', checkInput(departementR, depRegex).value) : error = true;
+      checkInput(sexe, sexeRegex) ? data.append('sexe', checkInput(sexe, sexeRegex).value) : error = true;
+      checkInput(anneeDSelect, yearRegex) ? data.append('anneeDeces', checkInput(anneeDSelect, yearRegex).value) : error = true;
+      checkInput(moisDSelect, monthRegex) ? data.append('moisDeces', checkInput(moisDSelect, monthRegex).value) : error = true;
 
-      if ( error ) {
-        console.log("Error");
-        console.log(data)
-        return false;
+      if ( error ) return false;
+
+      if ( type === 1 ){
+
+        fetch('http://127.0.0.1/clinique/api/edit_benef.php', {
+          method: 'post',
+          body: data
+        })
+        .then( response => response.json())
+        .then( res => {
+          alert("Modification apportée avec succes");
+          renderPage(7, res.nir);
+        });
+
+      }else {
+
+        fetch('http://127.0.0.1/clinique/api/add_benef.php', {
+          method: 'post',
+          body: data
+        })
+        .then( response => response.json())
+        .then( res => {
+          alert("Bénéficiare ajouté avec succes");
+          renderPage(7, res.nir);
+        });
+        
       }
 
-      console.log("Sub !!");
-      console.log(data);
 
     })
 

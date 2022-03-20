@@ -16,7 +16,7 @@ function checkAddAffecForm(){
 
 
     // Regex
-    const nirRegex = /^[a-zA-Z]{17}$/;
+    const nirRegex = /^[a-zA-Z0-9]{10,16}$/;
     const aldRegex = /^[0-9]{8}$/;
     const motifERegex = /^[0-9]{8}$/;
     const motifMRegex = /^[a-zA-Z]{5}$/;

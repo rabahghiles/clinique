@@ -138,12 +138,18 @@ body {
 
 .body .search {
   display: flex;
+  justify-content: space-between;
   padding: 20px 40px;
   background-color: #2A2A2A;
   position: relative;
 }
 
-.body .search input {
+.body .search .search_container {
+  display: flex;
+  width: 100%;
+}
+
+.body .search .search_container input {
   width: 60%;
   height: 40px;
   border-radius: 5px;
@@ -155,7 +161,7 @@ body {
   outline: none;
 }
 
-.body .search i {
+.body .search .search_container i {
   width: 30px;
   height: 40px;
   border-radius: 5px;
@@ -169,9 +175,35 @@ body {
   opacity: .2;
 }
 
+
+.body .search .deconnexion_form {}
+
+.body .search .deconnexion_form button {
+  height: 100%;
+  min-width: 120px;
+  color: #FFF;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 3px;
+  background-color: #FF1946;
+  cursor: pointer;
+  border: none;
+}
+
+.body .search .deconnexion_form button:hover {
+  background-color: #ff4268;
+}
+
+
+
 .form_c {
   padding: 40px;
   min-height: 100vh;
+}
+
+.form_c .first {
+  color: #C5C5C5;
+  font-size: 12px;
 }
 
 .form_c h2 {
@@ -325,6 +357,8 @@ body {
 .benef_action_add_prestation:hover { background-color: #3992b6; }
 .benef_action_delet_benef { background-color: #FF1946; }
 .benef_action_delet_benef:hover { background-color: #fc4368; }
+.benef_action_detail { background-color: #b4b4b4; }
+.benef_action_detail:hover { background-color: #cfcfcf; }
 
 
 /* DETAILS BENEF */
@@ -457,4 +491,7 @@ body {
   color: #FFF;
 }
 
+/* .first p {
+  text-align: center;
+} */
 

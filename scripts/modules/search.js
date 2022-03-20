@@ -1,22 +1,12 @@
-function search(){
+function search(keyword){
 
-  const searchInput = document.getElementById("search");
+  return new Promise((resolve, reject) => {
 
-  if ( searchInput ) {
+    fetch(`http://127.0.0.1/clinique/api/search.php?keyword=${keyword}`)
+    .then( res => res.json())
+    .then( data => resolve(data))
 
-    let value = "";
-
-    searchInput.addEventListener("keyup", function(e){
-
-      value = this.value.trim();
-
-      if ( value.length >= 3 ) {
-        console.log("Search ... for keyword : "+value);
-      }
-
-    })
-
-  }
+  });
 
 }
 

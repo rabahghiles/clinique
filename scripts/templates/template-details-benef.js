@@ -1,93 +1,35 @@
 function detailsBenef(nir){
 
-  const data = {
-    personnal : {
-      nir,
-      annee_n: "1980",
-      dep: 92,
-      sexe: 1,
-      annee_d: "1990", 
-      mois_d: "09",
-    },
-    affections : [
-      {
-        nir: "GBFHGTDETDDDDDDDD",
-        ald: "11156789",
-        date_d: "2020-02-10",
-        date_f: "2020-01-03",
-        motif_e: "11156789",
-        motif_m: "AAAEF",
-      },
-      {
-        nir: "FVGBNHRFGBFHGTDET",
-        ald: "23456789",
-        date_d: "2022-02-10",
-        date_f: "2022-04-09",
-        motif_e: "23456789",
-        motif_m: "ZSDEF",
-      }
-    ],
-    prestations : [
-      {
-        nir: "CCCCERFTGYHUJLKDC",
-        date_e_s: "2022-01-20",
-        date_f_s: "2022-03-25",
-        num_ps: "DVFGRTFGHNBGTDFVFgfEDjFGHYTGBDp",
-        nat: "3449",
-        date_d: "2022-11-29",
-        spe_nat: "22222233",
-        top_b: "Z",
-        date_pr: "2021-09-12",
-        q_ab: "356",
-      },
-      {
-        nir: "DDDDDDDDDDHUJLKDC",
-        date_e_s: "2002-01-20",
-        date_f_s: "2002-01-10",
-        num_ps: "DFCGRTFGHNBGTDFVFgfEDjFGHYTGBDp",
-        nat: "3440",
-        date_d: "2001-02-29",
-        spe_nat: "12222233",
-        top_b: "A",
-        date_pr: "2009-09-12",
-        q_ab: "156",
-      },
-      {
-        nir: "XXXXXXXTGYHUJLKDC",
-        date_e_s: "2000-01-20",
-        date_f_s: "2000-01-10",
-        num_ps: "A000POKLMLBGTDFVFgfEDjFGHYTGBDp",
-        nat: "1149",
-        date_d: "2000-11-29",
-        spe_nat: "11122233",
-        top_b: "B",
-        date_pr: "2019-09-12",
-        q_ab: "106",
-      }
-    ],
-  }
+  return new Promise((resolve, reject) => {
+    fetch(`http://127.0.0.1/clinique/api/get_benef_infos.php?nir=${nir}`)
+    .then( res => res.json() )
+    .then( data => resolve(getTemplate(data)) )
+  })
 
-  const {personnal, affections, prestations} = data;
+}
 
+function getTemplate({personnal, affections, prestations}) {
 
-  return `
-    <h2>Détails bénéficiaire : ${personnal.nir}</h2>
-            
+  let template = `
+    <h2>Détails bénéficiaire : ${personnal.BEN_NIR_IDT}</h2>
+              
     <h3>Informations personnels :</h3>
     <div class="personnal_infos">
-      <div><span class="strong">NIR :</span>${personnal.nir}</div>
-      <div><span class="strong">Année de naissance :</span> ${personnal.annee_n}</div>
-      <div><span class="strong">Département de résidence :</span> ${personnal.dep}</div>
-      <div><span class="strong">Sexe :</span> ${personnal.sexe === 0 ? 'Homme' : 'Femme'}</div>
-      <div><span class="strong">Année de décès :</span> ${personnal.annee_d}</div>
-      <div><span class="strong">mois de décès :</span> ${getMonth(personnal.mois_d)}</div>
+      <div><span class="strong">NIR :</span>${personnal.BEN_NIR_IDT}</div>
+      <div><span class="strong">Année de naissance :</span> ${personnal.BEN_NAI_ANN}</div>
+      <div><span class="strong">Département de résidence :</span> ${personnal.BEN_RES_DPT}</div>
+      <div><span class="strong">Sexe :</span> ${personnal.BEN_SEX_COD === 1 ? 'Homme' : 'Femme'}</div>
+      ${getMonthAndYear(personnal.BEN_DCD_AME)}
       <div class="actions">
-        <a class="action_benef action_benef_modif" href="${personnal.nir}">Modifier</a>
-        <a class="action_benef action_benef_delet" href="${personnal.nir}">Supprimer</a>
+        <a class="action_benef action_benef_modif" href="${personnal.BEN_NIR_IDT}">Modifier</a>
+        <a class="action_benef action_benef_delet" href="${personnal.BEN_NIR_IDT}">Supprimer</a>
       </div>
     </div>
+  `;
 
-    <h3>Affections :</h3>
+  template += `<h3>Affections : (${affections.length})</h3>`;
+
+  if (affections.length > 0) template += `
     <div class="affecs">
       <ul>
         <li class="head">
@@ -101,11 +43,13 @@ function detailsBenef(nir){
         ${getAffection(affections)}
       </ul>
     </div>
+  `;
 
-    <h3>Informations Présatation :</h3>
+  template += `<h3>Prestations : (${prestations.length})</h3>`;
+
+  if (prestations.length > 0) template += `
     <div class="press">
       <ul>
-
         <li class="head">
           <div>Début des soins</div>
           <div>Fin des soins</div>
@@ -121,7 +65,11 @@ function detailsBenef(nir){
         ${getPresstation(prestations)}
       </ul>
     </div>
+
   `;
+
+
+  return template;
 
 }
 
@@ -133,14 +81,14 @@ function getAffection(data) {
   data.forEach(affec => {
     result += `
       <li class="row">
-        <div>${affec.ald}</div>
-        <div>${affec.date_d}</div>
-        <div>${affec.date_f}</div>
-        <div>${affec.motif_e}</div>
-        <div>${affec.motif_m}</div>
+        <div>${affec.IMB_ALD_NUM}</div>
+        <div>${affec.IMB_ALD_DTD}</div>
+        <div>${affec.IMB_ALD_DTF}</div>
+        <div>${affec.IMB_ETM_NAT}</div>
+        <div>${affec.MED_MTF_COD}</div>
         <div class="actions">
-          <a class="action_affec action_affec_modif" href="${affec.nir}">Modifier</a>
-          <a class="action_affec action_affec_delet" href="${affec.nir}">Supprimer</a>
+          <a class="action_affec action_affec_modif" href="${affec._id}">Modifier</a>
+          <a class="action_affec action_affec_delet" href="${affec._id}">Supprimer</a>
         </div>
       </li>
     `;
@@ -156,18 +104,18 @@ function getPresstation(data) {
   data.forEach(press => {
     result += `
       <li class="row">
-        <div>${press.date_e_s}</div>
-        <div>${press.date_f_s}</div>
-        <div>${press.num_ps}</div>
-        <div>${press.nat}</div>
-        <div>${press.date_d}</div>
-        <div>${press.spe_nat}</div>
-        <div>${press.top_b}</div>
-        <div>${press.date_pr}</div>
-        <div>${press.q_ab}</div>
+        <div>${press.EXE_SOI_DTD}</div>
+        <div>${press.EXE_SOI_DTF}</div>
+        <div>${press.PFS_PRE_CRY}</div>
+        <div>${press.PRS_NAT_REF}</div>
+        <div>${press.FLX_DIS_DTD}</div>
+        <div>${press.PSE_ACT_SPE}</div>
+        <div>${press.BEN_CMU_TOP}</div>
+        <div>${press.PRE_PRE_DTD}</div>
+        <div>${press.PRS_ACT_QTE}</div>
         <div class="actions">
-          <a class="action_press action_press_modif" href="${press.nir}">Modifier</a>
-          <a class="action_press action_press_delet" href="${press.nir}">Supprimer</a>
+          <a class="action_press action_press_modif" href="${press._id}">Modifier</a>
+          <a class="action_press action_press_delet" href="${press._id}">Supprimer</a>
         </div>
       </li>
     `;
@@ -177,9 +125,21 @@ function getPresstation(data) {
 }
 
 
-function getMonth(month){
-  const monthsArray = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
-  return monthsArray[parseInt(month)-1];
+function getMonthAndYear(date){
+
+  if (date.length <= 0 ) return "";
+  else {
+
+    const monthsArray = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+    const year = date.substring(0,4);
+    const month = monthsArray[parseInt(date.substring(4,6))-1];
+
+    return `
+      <div><span class="strong">Année de décès :</span> ${parseInt(year)}</div>
+      <div><span class="strong">Mois de décès :</span> ${month.charAt(0).toUpperCase() + month.slice(1)}</div>
+    `;
+
+  }
 }
 
 
